@@ -9,7 +9,7 @@ function Occasion({ handleChange }) {
   return (
     <div>
         <form>
-            <label for='occasion'>Occasion</label>
+            <label for='occasion' id='label'>Occasion</label>
             <select  type='occasion'
             // value={occasion}
             id='occasion'

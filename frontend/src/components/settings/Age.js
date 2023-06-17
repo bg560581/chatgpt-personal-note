@@ -14,10 +14,10 @@ export default function Age({ handleChange }) {
   return (
     <div>
         <form>
-            <label for="age">Age</label>
+            {/* <label for="age">Age</label> */}
            <input 
               type='number'
-              placeholder='Age'
+              placeholder='Recipients Age...'
               // value={age}
               id='age'
               onChange={handleAgeChange}
