@@ -16,9 +16,9 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 
 // MIDDLEWARE
 app.use(cors({
-    origin: ["http://localhost:5000"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
+    // origin: ["http://localhost:3000"],
+    // methods: ["GET", "POST", "PUT", "DELETE"],
+    // credentials: true
 }));
 app.use(cookieParser());
 app.use(express.json());
