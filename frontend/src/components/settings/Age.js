@@ -18,7 +18,6 @@ export default function Age({ handleChange }) {
            <input 
               type='number'
               placeholder='Recipients Age...'
-              // value={age}
               id='age'
               onChange={handleAgeChange}
            />

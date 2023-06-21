@@ -11,7 +11,6 @@ function Occasion({ handleChange }) {
         <form>
             <label for='occasion' id='label'>Occasion</label>
             <select  type='occasion'
-            // value={occasion}
             id='occasion'
             onChange={handleOccasionChange}>
                 <option value=''>empty</option>

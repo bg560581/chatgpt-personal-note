@@ -5,10 +5,10 @@ import Age from "./settings/Age";
 import Gender from "./settings/Gender";
 import Occasion from "./settings/Occasion";
 import Relationship from "./settings/Relationship";
+import SubName from "./settings/SubName";
 import Name from "./settings/Name";
 import Tone from "./Tone";
-import Navigation from "./Navigation";
-import "./settings/styles.css"
+import "./settings/styles.css";
 
 function Interface() {
   const [age, setAge] = useState("");
@@ -17,7 +17,12 @@ function Interface() {
   const [relationship, setRelationship] = useState("");
   const [tone, setTone] = useState("");
   const [note, setNote] = useState("");
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
+  const [subName, setSubName] = useState("");
+  // const [submittedPayload, setSubmittedPayload] = useState("");
+  // const [show, setShow] = useState(true);
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,9 +33,14 @@ function Interface() {
       occasion: occasion,
       relationship: relationship,
       tone: tone,
-      name:name
+      name: name,
+      subName: subName,
     };
-    fetch("http://localhost:3000/chat/", {
+
+    // setSubmittedPayload((prevPayload) => ({ ...prevPayload, ...data }));
+    // setSubmittedPayload(data); // Store the submitted payload
+
+    fetch("http://localhost:5000/chat/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,6 +50,8 @@ function Interface() {
       .then((response) => response.json())
       .then((dataresponse) => {
         setNote(dataresponse.content);
+        // setSubmittedPayload(dataresponse.content); // Store the submitted payload
+
       });
 
     setAge("");
@@ -47,16 +59,43 @@ function Interface() {
     setOccasion("");
     setRelationship("");
     setTone("");
-    setName("")
+    setName("");
+    setSubName("");
   };
+
   useEffect(() => {}, [note]);
+  // useEffect(() => {
+  //   if (submittedPayload) {
+  //     handleSubmit();
+  //   }
+  // }, [submittedPayload]);
+
   function handleReset() {
-    window.location.reload(true)
-  };
+    window.location.reload(true);
+  }
+
+  // function handleGenerate() {
+  //   if (submittedPayload) {
+  //     // Re-submit the previous payload
+  //     fetch("http://localhost:5000/chat/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(submittedPayload),
+  //     })
+  //       .then((response) => response.json())
+  //       .then((dataresponse) => {
+  //         setNote(dataresponse.content);
+  //         setSubmittedPayload(dataresponse.content)          
+  //       });
+  //   }
+  //   // setShow(!show)
+
+  // }
   return (
     <div>
       <div>
-        <Navigation />
       </div>
       <div id="create">
         <h1>Create your own personal note</h1>
@@ -69,6 +108,7 @@ function Interface() {
         </div>
         <div>
           <form onSubmit={handleSubmit}>
+            <SubName handleChange={setSubName} />
             <Age handleChange={setAge} />
             <Gender handleChange={setGender} />
             <Occasion handleChange={setOccasion} />
@@ -77,6 +117,7 @@ function Interface() {
             <Name handleChange={setName}/>
             <button type="submit">Submit</button>
             <button type="reset" onClick={handleReset}>Reset</button>
+            {/* <button type="generate" className="regen" onClick={handleGenerate}>Regenerate</button> */}
           </form>
         </div>
       </div>

@@ -1,18 +1,22 @@
 import React from 'react'
-import Login from './authenication/Login'
+import { Link } from "react-router-dom"
+// import Login from './authenication/Login'
 import Home from './Home'
-import SignUp from './authenication/SignUp'
-import Pastnotes from './settings/Pastnotes'
+// import SignUp from './authenication/SignUp'
+// import Pastnotes from './settings/Pastnotes'
+import Interface from './Interface'
+import "../App.css"
 
 function Navigation() {
-    
+
   return (
     <div>
-        <ul>
-            <li><a href={"./Login"}>Login</a></li>
-            <li><a href={"./SignUp"}>Sign Up</a></li>
-            <li><a href={"./Home"}>Home</a></li>
-            <li>Past Notes</li>
+        <ul className='navBar'>
+            <li> <Link to = "/">Home</Link></li>
+            <li> <Link to = "/Interface">Interface</Link></li>
+            <li> <Link to = "/PastNotes">PastNotes</Link></li>
+            <li> <Link to = "/Login">Login</Link></li>
+            <li> <Link to = "/SignUp">SignUp</Link></li>
         </ul>
     </div>
   )

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 function Relationship({ handleChange }) {
-  // const [relationship, setRelationship] = useState("");
   function handleRelationshipChange(e) {
     const relationshipValue = e.target.value;
     handleChange(relationshipValue);
@@ -13,7 +12,6 @@ function Relationship({ handleChange }) {
         <select
           name="relation"
           placeholder="Select One"
-          // value={relationship}
           id="relationship"
           onChange={handleRelationshipChange}
         >

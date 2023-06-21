@@ -11,7 +11,6 @@ function Gender({ handleChange }) {
         <form>
           <label for="age">Gender</label>
           <select type='text'
-            // value={gender}
             id='gender'
             onChange={handleGenderChange}>
               <option value="">empty</option>
