@@ -27,34 +27,51 @@ function SignUp() {
     });
   };
 
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     try {
+//       const response = await fetch("http://localhost:5000/signup/", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(inputValue),
+//         credentials: "include",
+//       });
+//       const data = await response.json();
+//       const { success, message } = data;
+//       if (success) {
+//         handleSuccess(message);
+//       } else {
+//         handleError(message);
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+  
+//     setInputValue({
+//       email: "",
+//       password: "",
+//       username: "",
+//     });
+//   };
+
   const handleSubmit =  (e) => {
     e.preventDefault();
-        const { data } = fetch("http://localhost:5000/signup/", {
+        fetch("http://localhost:5000/signup/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(inputValue),
     })
-    .then((response) => response.json()) 
-    
-    
-    // axios.post(
-    //     "http://localhost:5000/signup/",
-    //     {
-    //       ...inputValue,
-    //     },
-    //     { withCredentials: true }
-    //   );
-    //   const { success, message } = data;
-    //   if (success) {
-    //     handleSuccess(message);
-    //   } else {
-    //     handleError(message);
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    .then((response) => response.json() )      
+    const { success, message } = inputValue;
+    if (success) {
+      handleSuccess(message);
+    } else {
+      handleError(message);
+    } 
     setInputValue({
       ...inputValue,
       email: "",

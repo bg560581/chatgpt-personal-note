@@ -1,13 +1,14 @@
 require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
+const app = express();
 const bodyParser = require('body-parser')
 const cookieParser = require ("cookie-parser");
 // const authRoute = require("./routes/authroute");
 const chat = require("./controllers/chat")
-const app = express();
 const { Signup, Login } = require("./controllers/authcontroller");
 const { userVerification } = require("./middleware/authmiddleware")
+const authenication = require('./controllers/authentication')
 
 // CONNECTION TO DATABASE
 const mongoose = require("mongoose");
@@ -15,22 +16,18 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
     .then(() => console.log("Mongoose connected", process.env.MONGO_URI));
 
 // MIDDLEWARE
-app.use(cors({
-    // origin: ["http://localhost:3000"],
-    // methods: ["GET", "POST", "PUT", "DELETE"],
-    // credentials: true
-}));
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-
 // CONTROLLERS AND ROUTES
-
-app.use('/chat', chat)
 
 app.get('/', (req, res) => {
     res.send('home');
 });
+
+app.use('/authentication', authenication)
+app.use('/chat', chat)
 app.use('/signup', Signup);
 app.use('/login', Login)
 app.post('/', userVerification)
