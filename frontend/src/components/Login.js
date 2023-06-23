@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { CurrentUser } from '../CurrentUser'
 
 function Login() {
+
+    const { setCurrentUser } = useContext(CurrentUser)
+
+    const [ credentials, setCredentials ] = useState({
+        username: '',
+        password: '',
+    })
+    const [ errorMessage, setErrorMessage ] = useState(null)
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -15,6 +24,8 @@ function Login() {
 
         if (response.status === 200) {
             setCurrentUser(data.user)
+            localStorage.setItem('token', data.token)
+            console.log(data.token)
             } else {
                 setErrorMessage(data.message)
             }
@@ -22,6 +33,11 @@ function Login() {
   return (
     <div>
         <h1>Login</h1>
+        {errorMessage !== null ? (
+        <div className="alert alert-danger" role="alert">
+          {errorMessage}
+        </div>
+      ) : null}
         <form onSubmit={handleSubmit}>
         <div>
           <div>
@@ -29,6 +45,10 @@ function Login() {
             <input
               type="username"
               id="username"
+              value={credentials.username}
+              onChange={(e) => 
+                setCredentials({ ...credentials, username: e.target.value })
+              }   
               name="username"
             />
           </div>
@@ -37,6 +57,10 @@ function Login() {
             <input
               type="password"
               id="password"
+              value={credentials.password}
+              onChange={(e) => 
+                setCredentials({ ...credentials, password: e.target.value })
+              }   
               name="password"
             />
           </div>

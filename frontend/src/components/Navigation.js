@@ -6,8 +6,23 @@ import Home from './Home'
 // import Pastnotes from './settings/Pastnotes'
 import Interface from './Interface'
 import "../App.css"
+import { CurrentUser } from '../CurrentUser'
 
 function Navigation() {
+
+    const { currentUser } = useContext(CurrentUser)
+
+    // let loggedIn = (
+
+    // )
+
+    if (currentUser) {
+        loggedIn = (
+            <li>
+                Logged in as {currentUser.username}
+            </li>
+        )
+    }
 
   return (
     <div>

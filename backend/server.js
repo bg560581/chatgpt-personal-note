@@ -7,7 +7,7 @@ const cookieParser = require ("cookie-parser");
 // const authRoute = require("./routes/authroute");
 const chat = require("./controllers/chat")
 const { Signup, Login } = require("./controllers/authcontroller");
-const { userVerification } = require("./middleware/authmiddleware")
+// const { userVerification } = require("./middleware/authmiddleware")
 const authenication = require('./controllers/authentication')
 
 // CONNECTION TO DATABASE
@@ -30,7 +30,7 @@ app.use('/authentication', authenication)
 app.use('/chat', chat)
 app.use('/signup', Signup);
 app.use('/login', Login)
-app.post('/', userVerification)
+// app.post('/', userVerification)
 
 
 app.get('*', (req, res) => {

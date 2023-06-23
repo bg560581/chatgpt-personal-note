@@ -15,10 +15,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Your password is required"],
   },
-  createdAt: {
-    type: Date,
-    default: new Date(),
-  },
+//   createdAt: {
+//     type: Date,
+//     default: new Date(),
+//   },
 });
 
 userSchema.pre("save", async function () {

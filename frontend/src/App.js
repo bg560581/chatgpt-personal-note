@@ -6,11 +6,13 @@ import Interface from "./components/Interface";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import CurrentUserProvider from "./CurrentUser";
 
 
 function App() {
 
   return (
+    <CurrentUserProvider>
     <div>
        <Router>
         <Navigation />
@@ -22,6 +24,7 @@ function App() {
         </Switch>
       </Router>
     </div>
+    </CurrentUserProvider>
   )
 }
 
