@@ -8,7 +8,7 @@ import Relationship from "./settings/Relationship";
 import SubName from "./settings/SubName";
 import Name from "./settings/Name";
 import Tone from "./Tone";
-import "./settings/styles.css";
+import "../styles/styles.css";
 
 function Interface() {
   const [age, setAge] = useState("");
@@ -21,8 +21,6 @@ function Interface() {
   const [subName, setSubName] = useState("");
   // const [submittedPayload, setSubmittedPayload] = useState("");
   // const [show, setShow] = useState(true);
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +49,6 @@ function Interface() {
       .then((dataresponse) => {
         setNote(dataresponse.content);
         // setSubmittedPayload(dataresponse.content); // Store the submitted payload
-
       });
 
     setAge("");
@@ -87,7 +84,7 @@ function Interface() {
   //       .then((response) => response.json())
   //       .then((dataresponse) => {
   //         setNote(dataresponse.content);
-  //         setSubmittedPayload(dataresponse.content)          
+  //         setSubmittedPayload(dataresponse.content)
   //       });
   //   }
   //   // setShow(!show)
@@ -95,29 +92,52 @@ function Interface() {
   // }
   return (
     <div>
-      <div>
-      </div>
+      <div></div>
       <div id="create">
         <h1>Create your own personal note</h1>
         <p>
           using me you can create a personal note for any Occasion, for anyone,
           of any age, and in any Style
         </p>
-        <div id="yourNote">
-          {note}
-        </div>
-        <div>
+        <div id="yourNote">{note}</div>
+        <div className="container">
           <form onSubmit={handleSubmit}>
-            <SubName handleChange={setSubName} />
-            <Age handleChange={setAge} />
-            <Gender handleChange={setGender} />
-            <Occasion handleChange={setOccasion} />
-            <Relationship handleChange={setRelationship} />
-            <Tone handleChange={setTone} />
-            <Name handleChange={setName}/>
-            <button type="submit">Submit</button>
-            <button type="reset" onClick={handleReset}>Reset</button>
-            {/* <button type="generate" className="regen" onClick={handleGenerate}>Regenerate</button> */}
+            <div className="form-row">
+              <div className="input-data">
+              <SubName handleChange={setSubName} required />
+              <div className="underline"></div>
+              </div>
+              <div>
+                <Age handleChange={setAge} id="age" />
+              </div>
+            </div>
+            <div>
+              <Gender handleChange={setGender} />
+            </div>
+            <div>
+              <Occasion handleChange={setOccasion} />
+            </div>
+            <div>
+              <Relationship handleChange={setRelationship} />
+            </div>
+            <div>
+              <Tone handleChange={setTone} />
+            </div>
+            <div>
+              <Name
+                handleChange={setName}
+                id="name"
+                styles={{ marginTop: "60px" }}
+              />
+            </div>
+            <div>
+              <button type="submit" id="interfaceSubmit">
+                Submit
+              </button>
+              <button type="reset" id="interfaceReset" onClick={handleReset}>
+                Reset
+              </button>
+            </div>
           </form>
         </div>
       </div>

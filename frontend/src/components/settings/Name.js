@@ -8,6 +8,7 @@ function Name( { handleChange }) {
   
   return (
     <div>
+      <label>Your Name</label>
        <input 
               type="name"
               placeholder="Your Name..."

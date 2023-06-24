@@ -6,12 +6,18 @@ function SubName({ handleChange }) {
        handleChange(nameValue)
      }
   return (
-    <div>
+    <div className='flex-container'>
+        <div className='flex-name'>
+        <label>Recipient's Name</label>
+        </div>
+
+        
        <input 
               type="name"
-              placeholder="Recipients Name..."
-              onChange={handleNameChange}
-              ></input>
+              placeholder="Recipient's Name..."
+              onChange={handleNameChange} 
+              />
+              <div className='underline'></div>
 
     </div>
   )

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { CurrentUser } from '../CurrentUser'
 
+
 function Login() {
 
     const { setCurrentUser } = useContext(CurrentUser)
@@ -52,7 +53,7 @@ function Login() {
               name="username"
             />
           </div>
-          <div>
+          <div className='flex-container'>
             <label htmlFor="password">Password</label>
             <input
               type="password"

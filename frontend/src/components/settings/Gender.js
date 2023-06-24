@@ -9,13 +9,14 @@ function Gender({ handleChange }) {
   return (
     <div>
         <form>
-          <label for="age">Gender</label>
+          <label for="age">Gender of Recipient</label>
           <select type='text'
             id='gender'
             onChange={handleGenderChange}>
               <option value="">empty</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
+              <option value="Non-Binary">Female</option>
               <option value="none">None</option>
           </select>
         </form>

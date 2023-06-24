@@ -33,9 +33,14 @@ router.post("/", async (req, res) => {
 
 
 
-// router.get('/', async (req, res) => {
-//     const notes = await Note.findAll()
-//     res.json(notes)
-// })
+router.get('/', async (req, res) => {
+    try{
+        const notes = await Note.find()
+        res.json(notes)
+    }catch(err) {
+        console.log(err)
+        res.status(500).json({ error:'server error' })
+    }
+})
 
 module.exports = router

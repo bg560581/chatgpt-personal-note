@@ -14,14 +14,17 @@ export default function Age({ handleChange }) {
   return (
     <div>
         <form>
-            {/* <label for="age">Age</label> */}
+          <div className='flex-container'>
+
+            <label for="age">Age</label>
            <input 
               type='number'
               placeholder='Recipients Age...'
               id='age'
               onChange={handleAgeChange}
-           />
+              />
 
+              </div>
         </form>
 
 
