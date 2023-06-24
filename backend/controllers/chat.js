@@ -20,10 +20,11 @@ router.post("/", async (req, res) => {
     const tone = req.body.tone
     const yourName = req.body.name
     const theirName = req.body.subName
+    const wordCount = req.body.words
 
     const note = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{role: "user", content: `write me a note for a ${gender} who is name is ${theirName} at the age of ${age} and is ${relationship} for ${occasion} in a ${tone} manner sent from ${yourName}.`}],
+        messages: [{role: "user", content: `write me a note for a ${gender} who is name is ${theirName} at the age of ${age} and is ${relationship} for ${occasion} in a ${tone} manner sent from ${yourName} in ${wordCount}.`}],
     })
     const myNote = await Note.create(note.data.choices[0].message)
     res.json(myNote) 

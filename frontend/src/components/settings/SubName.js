@@ -1,25 +1,23 @@
-import React from 'react'
+import React from "react";
 
 function SubName({ handleChange }) {
-    function handleNameChange(e) {
-       const nameValue = (e.target.value)
-       handleChange(nameValue)
-     }
+  function handleNameChange(e) {
+    const nameValue = e.target.value;
+    handleChange(nameValue);
+  }
   return (
-    <div className='flex-container'>
-        <div className='flex-name'>
+    <div className="row">
+      <div className="col-25">
         <label>Recipient's Name</label>
-        </div>
-
-        
-       <input 
-              type="name"
-              placeholder="Recipient's Name..."
-              onChange={handleNameChange} 
-              />
-              <div className='underline'></div>
-
+      </div>
+      <div className="col-75">
+        <input
+          type="name"
+          placeholder="Recipient's Name..."
+          onChange={handleNameChange}
+        />
+      </div>
     </div>
-  )
+  );
 }
-export default SubName
+export default SubName;

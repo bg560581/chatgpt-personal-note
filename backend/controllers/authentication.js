@@ -19,8 +19,10 @@ router.post('/', async (req, res) => {
                 message: 'Could not find username or password'
             })
         }
-        const token = jwt.sign({ id: user.userId }, process.env.TOKEN_KEY);
-        res.json({ user, token });
+        else {
+            const token = jwt.sign({ id: user.userId }, process.env.TOKEN_KEY);
+            res.json({ user, token });
+        }
       } catch (error) {
         console.error('Authentication error:', error);
         res.status(500).json({ message: 'Internal server error' });

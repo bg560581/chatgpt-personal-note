@@ -1,25 +1,25 @@
 import React, { useState } from 'react'
 
 
-export default function Age({ handleChange }) {
+export default function Words({ handleChange }) {
     // const [age, setAge] = useState([])
     function handleAgeChange(e){
         // setAge(e.target.value)
-        const ageValue = e.target.value;
-        handleChange(ageValue)
+        const wordValue = e.target.value;
+        handleChange(wordValue)
       }
   return (
     <div>
         <form>
           <div className='row'>
           <div className='col-25'>
-            <label for="age">Age</label>
+            <label for="words">Word Count</label>
             </div>
 
            <input 
               type='number'
-              placeholder='Recipients Age...'
-              id='age'
+              placeholder='Number of Words'
+              id='wordCount'
               onChange={handleAgeChange}
               />
 

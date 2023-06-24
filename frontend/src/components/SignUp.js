@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 function SignUp() {
@@ -8,6 +7,8 @@ function SignUp() {
     password: "",
     username: "",
   });
+  const [ signupMessage, setsignupMessage ] = useState(null)
+
   const { email, password, username } = inputValue;
 
   const handleError = (err) =>
@@ -66,9 +67,11 @@ function SignUp() {
         body: JSON.stringify(inputValue),
     })
     .then((response) => response.json() )      
-    const { success, message } = inputValue;
-    if (success) {
-      handleSuccess(message);
+    const { message } = inputValue;
+    console.log(inputValue);
+    if (inputValue) {
+        handleSuccess();
+        setsignupMessage('You have signed up successfully!')
     } else {
       handleError(message);
     } 
@@ -82,6 +85,12 @@ function SignUp() {
   return (
     <div>
       <h1>SignUp</h1>
+      {{signupMessage} !== null ? (
+        <div className="alert" role="alert">
+          {signupMessage}
+          
+        </div>
+      ) : null}
       <h3>
         fill out the form below and click submit to create anaccount with us
       </h3>

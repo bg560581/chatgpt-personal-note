@@ -9,6 +9,8 @@ import SubName from "./settings/SubName";
 import Name from "./settings/Name";
 import Tone from "./Tone";
 import "../styles/styles.css";
+import Words from "./settings/Words";
+import Navigation from "./Navigation";
 
 function Interface() {
   const [age, setAge] = useState("");
@@ -19,6 +21,7 @@ function Interface() {
   const [note, setNote] = useState("");
   const [name, setName] = useState("");
   const [subName, setSubName] = useState("");
+  const [wordCount, setWordCount] = useState("")
   // const [submittedPayload, setSubmittedPayload] = useState("");
   // const [show, setShow] = useState(true);
 
@@ -33,6 +36,7 @@ function Interface() {
       tone: tone,
       name: name,
       subName: subName,
+      wordCount: wordCount
     };
 
     // setSubmittedPayload((prevPayload) => ({ ...prevPayload, ...data }));
@@ -58,6 +62,7 @@ function Interface() {
     setTone("");
     setName("");
     setSubName("");
+    setWordCount("")
   };
 
   useEffect(() => {}, [note]);
@@ -92,6 +97,7 @@ function Interface() {
   // }
   return (
     <div>
+
       <div></div>
       <div id="create">
         <h1>Create your own personal note</h1>
@@ -102,12 +108,15 @@ function Interface() {
         <div id="yourNote">{note}</div>
         <div className="container">
           <form onSubmit={handleSubmit}>
+
+
+
             <div className="form-row">
-              <div className="input-data">
               <SubName handleChange={setSubName} required />
-              <div className="underline"></div>
-              </div>
               <div>
+
+
+
                 <Age handleChange={setAge} id="age" />
               </div>
             </div>
@@ -130,6 +139,13 @@ function Interface() {
                 styles={{ marginTop: "60px" }}
               />
             </div>
+            {/* <div>
+              <Words
+                handleChange={setWordCount}
+                id="word count"
+                styles={{ marginTop: "60px" }}
+              />
+            </div> */}
             <div>
               <button type="submit" id="interfaceSubmit">
                 Submit

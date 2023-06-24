@@ -22,14 +22,14 @@ app.use(express.json());
 
 // CONTROLLERS AND ROUTES
 
-app.get('/', (req, res) => {
-    res.send('home');
-});
+// app.get('/', (req, res) => {
+//     res.send('home');
+// });
 
+app.use('/login', Login)
 app.use('/authentication', authenication)
 app.use('/chat', chat)
 app.use('/signup', Signup);
-app.use('/login', Login)
 // app.post('/', userVerification)
 
 

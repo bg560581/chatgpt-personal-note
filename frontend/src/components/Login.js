@@ -1,16 +1,21 @@
 import React, { useContext, useState } from 'react'
+import PropTypes from 'prop-types'
 import { CurrentUser } from '../CurrentUser'
+import Interface from './Interface';
 
+function Login({ setToken }) {
 
-function Login() {
-
-    const { setCurrentUser } = useContext(CurrentUser)
+    // const { setCurrentUser } = useContext(CurrentUser)
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const [ credentials, setCredentials ] = useState({
         username: '',
         password: '',
     })
     const [ errorMessage, setErrorMessage ] = useState(null)
+    const [ LoginMessage, setLoginMessage ] = useState(null)
+    const [username, setUserName] = useState();
+    const [password, setPassword] = useState();
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -22,21 +27,42 @@ function Login() {
             body: JSON.stringify(credentials)
         })
         const data = await response.json()
-
+        // const token = await loginUser({
+        //     username,
+        //     password
+        // })
+        // setToken(token)
         if (response.status === 200) {
-            setCurrentUser(data.user)
+            setToken(data.token)
+            // setCurrentUser(data.user)
             localStorage.setItem('token', data.token)
-            console.log(data.token)
+            setIsLoggedIn(true)
+            setLoginMessage('You have logged in Successfully')
+
+            console.log(data)
             } else {
                 setErrorMessage(data.message)
             }
+            
     }
+if (isLoggedIn) {
+       return <Interface />
+        
+}
+
   return (
     <div>
-        <h1>Login</h1>
+        <h1>Please Login</h1>
         {errorMessage !== null ? (
         <div className="alert alert-danger" role="alert">
           {errorMessage}
+          
+        </div>
+      ) : null}
+        {{LoginMessage} !== null ? (
+        <div className="alert" role="alert">
+          {LoginMessage}
+          
         </div>
       ) : null}
         <form onSubmit={handleSubmit}>
@@ -49,6 +75,7 @@ function Login() {
               value={credentials.username}
               onChange={(e) => 
                 setCredentials({ ...credentials, username: e.target.value })
+                // setUserName(e.target.value)
               }   
               name="username"
             />
@@ -61,6 +88,7 @@ function Login() {
               value={credentials.password}
               onChange={(e) => 
                 setCredentials({ ...credentials, password: e.target.value })
+                // setPassword(e.target.value)
               }   
               name="password"
             />
@@ -74,5 +102,7 @@ function Login() {
     </div>
   )
 }
-
+Login.prototypes = {
+    setToken: PropTypes.func.isRequired
+}
 export default Login
