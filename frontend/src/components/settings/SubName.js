@@ -6,16 +6,14 @@ function SubName({ handleChange }) {
     handleChange(nameValue);
   }
   return (
-    <div className="row">
-      <div className="col-25">
-        <label>Recipient's Name</label>
-      </div>
-      <div className="col-75">
+    <div>
+      <div className="input-data">
         <input
           type="name"
           placeholder="Recipient's Name..."
-          onChange={handleNameChange}
-        />
+          onChange={handleNameChange}/>
+        <div className="underline"></div>
+        <label for="">Recipient's Name</label>
       </div>
     </div>
   );

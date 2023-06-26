@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { CurrentUser } from '../CurrentUser'
 import Interface from './Interface';
 
 function Login({ setToken }) {
-
+    
     // const { setCurrentUser } = useContext(CurrentUser)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    
     const [ credentials, setCredentials ] = useState({
         username: '',
         password: '',
@@ -16,7 +17,7 @@ function Login({ setToken }) {
     const [ LoginMessage, setLoginMessage ] = useState(null)
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
-
+    
     async function handleSubmit(e) {
         e.preventDefault()
         const response = await fetch('http://localhost:5000/authentication/', {
@@ -28,9 +29,9 @@ function Login({ setToken }) {
         })
         const data = await response.json()
         // const token = await loginUser({
-        //     username,
-        //     password
-        // })
+            //     username,
+            //     password
+            // })
         // setToken(token)
         if (response.status === 200) {
             setToken(data.token)
@@ -38,20 +39,18 @@ function Login({ setToken }) {
             localStorage.setItem('token', data.token)
             setIsLoggedIn(true)
             setLoginMessage('You have logged in Successfully')
-
+            
             console.log(data)
             } else {
                 setErrorMessage(data.message)
             }
             
-    }
-if (isLoggedIn) {
-       return <Interface />
-        
-}
-
-  return (
-    <div>
+        }
+        if (isLoggedIn){
+            <Navigate to='/'/>
+        }
+        return (
+            <div>
         <h1>Please Login</h1>
         {errorMessage !== null ? (
         <div className="alert alert-danger" role="alert">
@@ -95,6 +94,9 @@ if (isLoggedIn) {
           </div>
         </div>
         <input type="submit" value="Login" />
+        <Link to='/SignUp'>
+              sign up
+        </Link>
       </form>
 
 
@@ -105,4 +107,5 @@ if (isLoggedIn) {
 Login.prototypes = {
     setToken: PropTypes.func.isRequired
 }
+
 export default Login

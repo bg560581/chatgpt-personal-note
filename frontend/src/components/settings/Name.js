@@ -8,14 +8,15 @@ function Name( { handleChange }) {
   
   return (
     <div>
-      <label>Your Name</label>
-       <input 
-              type="name"
-              placeholder="Your Name..."
-              onChange={handleNameChange}
-              ></input>
-
-    </div>
+      <div className='input-data'>
+          <input 
+            type="name"
+            placeholder="Your Name..."
+            onChange={handleNameChange}/>
+        <div className='underline'></div>
+        <label for=''>Your Name</label>
+        </div>
+      </div>
   )
 }
 

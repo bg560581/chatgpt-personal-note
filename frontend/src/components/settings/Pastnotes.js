@@ -9,7 +9,7 @@ function Pastnotes() {
  
     useEffect(() => {
         axios
-            .get('http://localhost:5000/chat')
+            .get('http://localhost:5000/chat/')
             .then((response) => {
     //             console.log(response);
                 setNotes(response.data);

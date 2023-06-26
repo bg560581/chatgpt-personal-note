@@ -21,9 +21,9 @@ function Interface() {
   const [note, setNote] = useState("");
   const [name, setName] = useState("");
   const [subName, setSubName] = useState("");
-  const [wordCount, setWordCount] = useState("")
-  // const [submittedPayload, setSubmittedPayload] = useState("");
-  // const [show, setShow] = useState(true);
+  const [wordCount, setWordCount] = useState("");
+  const [noteValue, setNoteValue] = useState("");
+  const [initialNote, setInitialNote] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,11 +36,8 @@ function Interface() {
       tone: tone,
       name: name,
       subName: subName,
-      wordCount: wordCount
+      wordCount: wordCount,
     };
-
-    // setSubmittedPayload((prevPayload) => ({ ...prevPayload, ...data }));
-    // setSubmittedPayload(data); // Store the submitted payload
 
     fetch("http://localhost:5000/chat/", {
       method: "POST",
@@ -51,8 +48,10 @@ function Interface() {
     })
       .then((response) => response.json())
       .then((dataresponse) => {
-        setNote(dataresponse.content);
-        // setSubmittedPayload(dataresponse.content); // Store the submitted payload
+        const aLovelyNote = dataresponse.content;
+        setNote(aLovelyNote);
+        setNoteValue(dataresponse.content);
+        setInitialNote(aLovelyNote);
       });
 
     setAge("");
@@ -62,18 +61,39 @@ function Interface() {
     setTone("");
     setName("");
     setSubName("");
-    setWordCount("")
+    setWordCount("");
   };
 
   useEffect(() => {}, [note]);
-  // useEffect(() => {
-  //   if (submittedPayload) {
-  //     handleSubmit();
-  //   }
-  // }, [submittedPayload]);
 
+  async function handleSave(e) {
+    e.preventDefault();
+    const noteData = {
+      note: noteValue,
+    };
+    console.log(noteData);
+    await fetch("http://localhost:5000/chat/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(noteData),
+    }).then((response) => response.json());
+    setNoteValue(noteData);
+    // .then(noteData => {
+    console.log(noteData);
+    //   // Handle the response from the server if needed
+    // })
+    // .catch(error => {
+    //   // Handle any errors that occur during the request
+    //   console.error(error);
+    // });
+  }
+
+  // RESETS CHANGES
   function handleReset() {
-    window.location.reload(true);
+    setNoteValue(initialNote);
+    console.log(initialNote);
   }
 
   // function handleGenerate() {
@@ -95,9 +115,9 @@ function Interface() {
   //   // setShow(!show)
 
   // }
+
   return (
     <div>
-
       <div></div>
       <div id="create">
         <h1>Create your own personal note</h1>
@@ -105,39 +125,45 @@ function Interface() {
           using me you can create a personal note for any Occasion, for anyone,
           of any age, and in any Style
         </p>
-        <div id="yourNote">{note}</div>
+        <div>
+          <textarea
+            value={noteValue}
+            onChange={(e) => setNoteValue(e.target.value)}
+            className="note-textbox"
+          />
+          <button type="submit" onClick={handleSave}>
+            save
+          </button>
+        </div>
         <div className="container">
           <form onSubmit={handleSubmit}>
-
-
-
             <div className="form-row">
-              <SubName handleChange={setSubName} required />
-              <div>
-
-
-
+              <div className="input-data">
+                <SubName handleChange={setSubName} required />
+              </div>
+              <div className="input-data">
+                <Name handleChange={setName} id="name" required />
+              </div>
+              <div className="input-data">
                 <Age handleChange={setAge} id="age" />
               </div>
             </div>
-            <div>
-              <Gender handleChange={setGender} />
+
+            <div className="form-row">
+              <div className="input-data">
+                <Gender handleChange={setGender} />
+              </div>
+              <div className="input-data">
+                <Relationship handleChange={setRelationship} />
+              </div>
             </div>
-            <div>
-              <Occasion handleChange={setOccasion} />
-            </div>
-            <div>
-              <Relationship handleChange={setRelationship} />
-            </div>
-            <div>
-              <Tone handleChange={setTone} />
-            </div>
-            <div>
-              <Name
-                handleChange={setName}
-                id="name"
-                styles={{ marginTop: "60px" }}
-              />
+            <div className="form-row">
+              <div className="input-data">
+                <Occasion handleChange={setOccasion} />
+              </div>
+              <div className="input-data">
+                <Tone handleChange={setTone} />
+              </div>
             </div>
             {/* <div>
               <Words
@@ -146,13 +172,19 @@ function Interface() {
                 styles={{ marginTop: "60px" }}
               />
             </div> */}
-            <div>
-              <button type="submit" id="interfaceSubmit">
-                Submit
-              </button>
-              <button type="reset" id="interfaceReset" onClick={handleReset}>
-                Reset
-              </button>
+            <div className="form-row submit-btn">
+              <div className="input-data">
+                <div className="inner"></div>
+                <button type="submit" id="interfaceSubmit">
+                  Submit
+                </button>
+              </div>
+              <div className="input-data">
+                <div className="inner"></div>
+                <button type="reset" id="interfaceReset" onClick={handleReset}>
+                  Reset Changes
+                </button>
+              </div>
             </div>
           </form>
         </div>

@@ -8,8 +8,8 @@ function Relationship({ handleChange }) {
   return (
     <div>
       <form id="relationship">
-        <label for="relationship">Relationship</label>
         <select
+          type="text"
           name="relation"
           placeholder="Select One"
           id="relationship"
@@ -42,6 +42,8 @@ function Relationship({ handleChange }) {
           <option value="spouse">Spouse</option>
           <option value="partner">Partner</option>
         </select>
+        <div className="underline"></div>
+        <label for="">Relationship</label>
       </form>
     </div>
   );

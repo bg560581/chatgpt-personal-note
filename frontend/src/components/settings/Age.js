@@ -11,18 +11,14 @@ export default function Age({ handleChange }) {
   return (
     <div>
         <form>
-          <div className='row'>
-          <div className='col-25'>
-            <label for="age">Age</label>
-            </div>
-
+          <div className='input-data'>
            <input 
               type='number'
               placeholder='Recipients Age...'
               id='age'
-              onChange={handleAgeChange}
-              />
-
+              onChange={handleAgeChange}/>
+          <div className='underline'></div>
+            <label for="">Age</label>
           </div>
         </form>
 

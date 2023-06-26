@@ -27,9 +27,8 @@ function Navigation() {
         )}
         {/* <div>{loggedIn}</div> */}
         <ul className='navBar'>
-            <li> <Link to = "/Interface">Interface</Link></li>
+            <li> <Link to = "/">Home</Link></li>
             <li> <Link to = "/Pastnotes">PastNotes</Link></li>
-            <li> <Link to = "/Login">Login</Link></li>
             <li> <Link to = "/SignUp">SignUp</Link></li>
         </ul>
     </div>

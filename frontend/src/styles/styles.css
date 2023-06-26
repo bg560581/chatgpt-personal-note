@@ -1,82 +1,129 @@
-body{
-    text-align: center;
-    background-color: rgb(134, 248, 248);
+body {
+  /* text-align: center; */
+  background-color: rgb(134, 248, 248);
 }
 
-#create{
-    margin-left: 5%; 
-    margin-right: 5%;
+#create {
+  margin-left: 5%;
+  margin-right: 5%;
 }
-label{
+/* label{
     padding-right:10px;
     margin-bottom: 5px;
     font-size: 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
-
-input{
+/* input{
     font-size: 25px;
     margin-bottom:  10px;
     box-shadow: 0px 3px 3px #999;
     border-radius: 5px;
     
+} */
+
+/* ul {
+  display: flex;
+  align-items: center;
+  margin-left: 50%;
 }
-select{
-    margin-bottom: 5px;
-    font-size: 25px;
+li {
+  list-style: none;
+} */
+
+/* .btn-login,
+.btn-signup {
+  padding-left: 35px;
+  padding-right: 35px;
+  display: inline-block;
+  font-size: 50px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0px 3px 3px #999;
+  transition-duration: 0.6;
 }
 
-    ul{
-        display: flex;
-        align-items: center;
-        margin-left: 50%;
-    }
-    li{
-        list-style: none;
-    }
-    
-    .login-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .link {
-        font-size: 35px;
-    }
-    
-    .btn-login, .btn-signup {
-        padding-left: 35px;
-        padding-right: 35px;
-        display: inline-block;
-        font-size: 50px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        outline: none;
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0px 3px 3px #999;
-        transition-duration: 0.6;
-    }
-    
-    
-    .btn:hover {
-        background-color: #2f899d;
-    }
-    
-    .btn:active {
-        box-shadow: 0 5px #666;
-        transform: translateY(4px);
-    }
+.btn:hover {
+  background-color: #2f899d;
+} */
 
-    .flex-container {
-        display: flex;
-        justify-content: center; 
-        align-items: flex-start;
+/* .btn:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+} */
 
+* {
+    box-sizing: border-box;
+  }
+  
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    /* margin-left: 5px; */
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+
+.note-textbox {
+  width: 100%;
+  height: 300px;
+  box-sizing: borderBox;
+  resize: vertical;
+  /* overflow:hidden; */
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+.container{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear:both;
+}
+
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
     }
-    
+  }
