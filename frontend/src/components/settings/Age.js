@@ -10,7 +10,6 @@ export default function Age({ handleChange }) {
       }
   return (
     <div>
-        <form>
           <div className='input-data'>
            <input 
               type='number'
@@ -20,7 +19,7 @@ export default function Age({ handleChange }) {
           <div className='underline'></div>
             <label for="">Age</label>
           </div>
-        </form>
+        
 
 
 

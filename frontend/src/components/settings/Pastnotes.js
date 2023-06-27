@@ -23,12 +23,14 @@ function Pastnotes() {
 
    
     return (
-    <div>
+    <div className='container-past'>
         <h1>Past Notes</h1>
-        {notes.map((note) => (
-            <div key={note._id}>
+        <p>
+            {notes.map((note) => (
+                <div key={note._id}>
                 <hr />{note.content}</div>
         ))}
+        </p>
     </div>
   )
 }

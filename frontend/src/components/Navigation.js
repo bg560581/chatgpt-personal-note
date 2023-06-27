@@ -19,7 +19,7 @@ function Navigation() {
 
 
   return (
-    <div>
+    <div className='container-navBar'>
         {currentUser && (
             <div>
                 Logged in as {currentUser.username}
@@ -27,9 +27,9 @@ function Navigation() {
         )}
         {/* <div>{loggedIn}</div> */}
         <ul className='navBar'>
-            <li> <Link to = "/">Home</Link></li>
-            <li> <Link to = "/Pastnotes">PastNotes</Link></li>
-            <li> <Link to = "/SignUp">SignUp</Link></li>
+            <li> <Link to = "/" className="navBar">Home</Link></li>
+            <li> <Link to = "/Pastnotes" className="navBar">Past Notes</Link></li>
+            {/* <li> <Link to = "/SignUp" className="navBar">SignUp </Link></li> */}
         </ul>
     </div>
   )

@@ -11,16 +11,16 @@ function SignUp() {
 
   const { email, password, username } = inputValue;
 
-  const handleError = (err) =>
+  const handleSignupError = (err) =>
     toast.error(err, {
       position: "bottom-left",
     });
-  const handleSuccess = (msg) =>
+  const handleSignupSuccess = (msg) =>
     toast.success(msg, {
       position: "bottom-right",
     });
 
-  const handleChange = (e) => {
+  const handleChangeSignup = (e) => {
     const { name, value } = e.target;
     setInputValue({
       ...inputValue,
@@ -57,7 +57,7 @@ function SignUp() {
 //     });
 //   };
 
-  const handleSubmit =  (e) => {
+  const handleSignUp =  (e) => {
     e.preventDefault();
         fetch("http://localhost:5000/signup/", {
         method: "POST",
@@ -70,10 +70,10 @@ function SignUp() {
     const { message } = inputValue;
     console.log(inputValue);
     if (inputValue) {
-        handleSuccess();
+        handleSignupSuccess();
         setsignupMessage('You have signed up successfully!')
     } else {
-      handleError(message);
+      handleSignupError(message);
     } 
     setInputValue({
       ...inputValue,
@@ -83,7 +83,7 @@ function SignUp() {
     });
   };
   return (
-    <div>
+    <div className="signUp">
       <h1>SignUp</h1>
       {{signupMessage} !== null ? (
         <div className="alert" role="alert">
@@ -94,7 +94,7 @@ function SignUp() {
       <h3>
         fill out the form below and click submit to create anaccount with us
       </h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSignUp}>
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -102,7 +102,7 @@ function SignUp() {
             name="email"
             value={email}
             placeholder="Enter your email..."
-            onChange={handleChange}
+            onChange={handleChangeSignup}
           />
         </div>
         <div>
@@ -124,8 +124,8 @@ function SignUp() {
             placeholder="Enter your password..."
             onChange={handleChange}
           />
-        </div>
-        <button type="submit">Submit</button>
+        </div >
+        <button type="submit" className="btn-signup">Submit</button>
       </form>
       <ToastContainer />
     </div>

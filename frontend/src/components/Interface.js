@@ -72,15 +72,14 @@ function Interface() {
       note: noteValue,
     };
     console.log(noteData);
-    await fetch("http://localhost:5000/chat/", {
+    await fetch("http://localhost:5000/chat/save", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(noteData),
     }).then((response) => response.json());
-    setNoteValue(noteData);
-    // .then(noteData => {
+    setNoteValue(noteData.note);
     console.log(noteData);
     //   // Handle the response from the server if needed
     // })
@@ -117,14 +116,18 @@ function Interface() {
   // }
 
   return (
-    <div>
+    <div className="body-interface">
       <div></div>
       <div id="create">
+        <div className="personal-note">
+
         <h1>Create your own personal note</h1>
+        <hr />
         <p>
           using me you can create a personal note for any Occasion, for anyone,
           of any age, and in any Style
         </p>
+        </div>
         <div>
           <textarea
             value={noteValue}
@@ -175,16 +178,15 @@ function Interface() {
             <div className="form-row submit-btn">
               <div className="input-data">
                 <div className="inner"></div>
-                <button type="submit" id="interfaceSubmit">
+                <button type="submit" className="submit-btn">
                   Submit
                 </button>
               </div>
               <div className="input-data">
                 <div className="inner"></div>
-                <button type="reset" id="interfaceReset" onClick={handleReset}>
+                <button type="reset" className="submit-btn" onClick={handleReset}>
                   Reset Changes
-                </button>
-              </div>
+                </button>              </div>
             </div>
           </form>
         </div>
