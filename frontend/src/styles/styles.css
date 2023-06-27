@@ -1,12 +1,19 @@
+*{
+    box-sizing: border-box;
+  }
+
+
 body {
   /* text-align: center; */
-  background-color: rgb(134, 248, 248);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 10px; */
+  background: linear-gradient(180deg, #fa8585 10%, #f09030 60%);
+  padding-bottom: 245px;
 }
 
-#create {
-  margin-left: 5%;
-  margin-right: 5%;
-}
+
 /* label{
     padding-right:10px;
     margin-bottom: 5px;
@@ -23,96 +30,108 @@ body {
     border-radius: 5px;
     
 } */
+h1{
+    text-align: center;
+}
+p{
+    padding: 15px;
+}
 
-/* ul {
+hr{
+    padding-left: 15px;
+    margin:15px;
+    border-top: 3px solid rgb(84, 8, 8)
+}
+h1, p {
+    color: rgb(84, 8, 8);
+}
+
+/* ---------PAST NOTES----------- */
+
+.container-past{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+    margin-left: 25%;
+    margin-right: 25%;   
+}
+
+
+
+/* -------------------------------------------------- */
+
+/* ------------------NAVIGATION BAR ------------------*/
+ul {
+    color: white;
+    /* position:inherit; */
   display: flex;
   align-items: center;
   margin-left: 50%;
 }
 li {
   list-style: none;
-} */
-
-/* .btn-login,
-.btn-signup {
-  padding-left: 35px;
-  padding-right: 35px;
-  display: inline-block;
-  font-size: 50px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0px 3px 3px #999;
-  transition-duration: 0.6;
 }
 
-.btn:hover {
-  background-color: #2f899d;
-} */
+.container-navBar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* height: 100vh; */
 
-/* .btn:active {
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-} */
+}
 
-* {
-    box-sizing: border-box;
-  }
-  
-  input[type=text], select, textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    /* margin-left: 5px; */
-  }
-  
-  label {
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-  }
-  
-  input[type=submit] {
-    background-color: #04AA6D;
+.navBar{
     color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right;
+    text-decoration: none;
   }
-  
-  input[type=submit]:hover {
-    background-color: #45a049;
-  }
+
+/* ------------------------- */
+
+/* --------------LOG IN--------------- */
+#username,
+#password, #signup-username, #signup-email, #signup-password {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 45px;
+  border-bottom: 2px solid rgb(167, 57, 57);
+  border: none;
+  /* background: transparent; */
+  outline: none;
+  border-radius: 15px;
+
+}
+
+.login-btn, .signup-btn {
+  background: rgb(84, 8, 8);
+  border: none;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  cursor: pointer;
+  top: 15px;
+  right: 2px;
+  width: 100%;
+  height: 60px;
+  margin: 0px 0px;
+  position: relative;
+  bottom: 30px;
+  border-radius: 15px;
+}
+
+/* ------------------------------- */
   
 
+  
 .note-textbox {
   width: 100%;
   height: 300px;
   box-sizing: borderBox;
   resize: vertical;
-  /* overflow:hidden; */
-}
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-.container{
-    border-radius: 5px;
-    background-color: #f2f2f2;
-
+  border-radius: 15px;
 }
 
 .row::after {
@@ -127,3 +146,91 @@ li {
       margin-top: 0;
     }
   }
+
+
+
+  
+  
+  /* .signUp{
+      margin-top:250px;
+      background-color: white;
+      width: 100%;
+      box-sizing: borderBox;
+      border-radius: 15px;
+    } */
+    
+    
+    /* -----------------------INTERFACE CSS---------------- */
+    
+    .container form{
+        padding: 10px 0 0 0;
+      }
+      .container form .form-row{
+        display: block;
+      }
+    
+    .personal-note{
+        background-color: white;
+        width: 100%;
+        box-sizing: borderBox;
+        resize: vertical;
+        border-radius: 15px;
+        /* height: 300px; */
+    }
+    
+.container form{
+    padding: 30px 0 0 0;
+  }
+
+.container form .form-row{
+    display: flex;
+    margin: 32px 0px;
+}
+
+form .form-row .input-data{
+    width: 100%;
+    height: 60px;
+    margin: 0 20px;
+    position: relative;
+    bottom: 30px;
+  }
+
+form .form-row .textarea{
+    height: 70px;
+  }
+
+.input-data input,
+.textarea textarea{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  outline: none;
+  
+}
+/* border-bottom: 2px solid white; */
+
+  select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+
+  #create {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  label{
+    color: white;
+  }
+
+/* -------------------------------------------- */

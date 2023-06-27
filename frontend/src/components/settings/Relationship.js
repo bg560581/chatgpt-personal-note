@@ -16,6 +16,7 @@ function Relationship({ handleChange }) {
           onChange={handleRelationshipChange}
         >
           <option value="">empty</option>
+          <option value="mother">Mother</option>
           <option value="father">Father</option>
           <option value="brother">Brother</option>
           <option value="sister">Sister</option>
