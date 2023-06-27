@@ -26,23 +26,21 @@ router.post("/", async (req, res) => {
         model: "gpt-3.5-turbo",
         messages: [{role: "user", content: `write me a note for a ${gender} who is name is ${theirName} at the age of ${age} and is ${relationship} for ${occasion} in a ${tone} manner sent from ${yourName} in ${wordCount}.`}],
     })
-    // res.json(note.data.choices[0].message) 
-    const createdNote = note.data.choices[0].message
-    const myNote = await Note.create(createdNote)
-    res.json(myNote) 
+    res.json(note.data.choices[0].message) 
+    // const createdNote = note.data.choices[0].message
+    // const myNote = await Note.create(createdNote)
+    // res.json(myNote) 
     console.log(note.data.choices[0].message);
 });
 
-router.post("/", async (req, res) => {
-    
-    const myNoteValue = req.body.noteValue
-    const myNote = await Note.create(myNoteValue)
+router.post("/save", async (req, res) => {
+    console.log("saving...");
+    const myNote = await Note.create({
+        content: req.body.note,
+        role: "assistant"
+    })
     res.json(myNote)
-    console.log(myNote);
 })
-
-
-
 
 router.get('/', async (req, res) => {
     try{
