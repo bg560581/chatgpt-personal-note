@@ -1,7 +1,4 @@
 import React, { useState } from 'react'
-import axios from 'axios'
-
-
 
 
 export default function Age({ handleChange }) {
@@ -14,15 +11,15 @@ export default function Age({ handleChange }) {
   return (
     <div>
         <form>
-            {/* <label for="age">Age</label> */}
+          <div className='input-data'>
            <input 
               type='number'
               placeholder='Recipients Age...'
-              // value={age}
               id='age'
-              onChange={handleAgeChange}
-           />
-
+              onChange={handleAgeChange}/>
+          <div className='underline'></div>
+            <label for="">Age</label>
+          </div>
         </form>
 
 

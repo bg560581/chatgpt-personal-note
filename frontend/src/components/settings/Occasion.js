@@ -9,9 +9,7 @@ function Occasion({ handleChange }) {
   return (
     <div>
         <form>
-            <label for='occasion' id='label'>Occasion</label>
-            <select  type='occasion'
-            // value={occasion}
+            <select  type='text'
             id='occasion'
             onChange={handleOccasionChange}>
                 <option value=''>empty</option>
@@ -26,6 +24,9 @@ function Occasion({ handleChange }) {
                 <option value='st patricks day'>Saint Patrick's Day</option>
                 <option value='easter'>Easter</option>
             </select>
+            <div className='underline'></div>
+            <label for='' id='label'>Occasion</label>
+
         </form>
     </div>
   )

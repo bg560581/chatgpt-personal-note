@@ -9,9 +9,8 @@ function Tone({ handleChange}) {
   return (
     <div>
       <form>
-        <label for='tone'>Tone</label>
         <select
-          type='tone'
+          type='text'
           // value={tone}
           id='tone'
           onChange={handleToneChange}>
@@ -25,6 +24,9 @@ function Tone({ handleChange}) {
             <option value='thoughtful'>Thoughtful</option>
             <option value='nice'>Nice</option>
           </select>
+          <div className='underline'></div>
+          <label for='tone'>Tone</label>
+
       </form>
 
 
