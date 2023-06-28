@@ -11,6 +11,7 @@ import Tone from "./Tone";
 import "../styles/styles.css";
 import Words from "./settings/Words";
 import Navigation from "./Navigation";
+import { log } from "console";
 
 function Interface() {
   const [age, setAge] = useState("");
@@ -24,10 +25,12 @@ function Interface() {
   const [wordCount, setWordCount] = useState("");
   const [noteValue, setNoteValue] = useState("");
   const [initialNote, setInitialNote] = useState("");
+  const [saveDisabled, setSaveDisabled] = useState(false)
+  const [emptyNote, setEmptyNote] = useState('')
+  const [submitDisabled, setSubmitDisabled] = useState(false);
+
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
     const data = {
       age: age,
       gender: gender,
@@ -53,21 +56,23 @@ function Interface() {
         setNoteValue(dataresponse.content);
         setInitialNote(aLovelyNote);
       });
-
-    setAge("");
-    setGender("");
-    setOccasion("");
-    setRelationship("");
-    setTone("");
-    setName("");
-    setSubName("");
-    setWordCount("");
-  };
-
-  useEffect(() => {}, [note]);
-
-  async function handleSave(e) {
-    e.preventDefault();
+      setAge("");
+      setGender("");
+      setOccasion("");
+      setRelationship("");
+      setTone("");
+      setName("");
+      setSubName("");
+      setWordCount("");
+      e.preventDefault();
+      e.currentTarget.disabled = true;
+      setSubmitDisabled(true)
+    };
+    
+    useEffect(() => {}, [note]);
+    
+    async function handleSave(e) {
+      e.preventDefault();
     const noteData = {
       note: noteValue,
     };
@@ -80,20 +85,24 @@ function Interface() {
       body: JSON.stringify(noteData),
     }).then((response) => response.json());
     setNoteValue(noteData.note);
+    setSaveDisabled(true)
     console.log(noteData);
-    //   // Handle the response from the server if needed
-    // })
-    // .catch(error => {
-    //   // Handle any errors that occur during the request
-    //   console.error(error);
-    // });
+    console.log(setSaveDisabled, "disabled...")
+
   }
 
   // RESETS CHANGES
   function handleReset() {
     setNoteValue(initialNote);
-    console.log(initialNote);
   }
+
+  // function handleRefresh(e) {
+  //   e.preventDefault();
+  //   setNoteValue("")
+  //   handleSubmit = (e)=>{
+  //     e.currentTarget.disabled=false
+  //   }
+  // }
 
   // function handleGenerate() {
   //   if (submittedPayload) {
@@ -114,7 +123,6 @@ function Interface() {
   //   // setShow(!show)
 
   // }
-
   return (
     <div className="body-interface">
       <div></div>
@@ -134,7 +142,7 @@ function Interface() {
             onChange={(e) => setNoteValue(e.target.value)}
             className="note-textbox"
           />
-          <button type="submit" onClick={handleSave}>
+          <button type="submit" className="save-btn" disabled={saveDisabled, !noteValue} onClick={handleSave}>
             save
           </button>
         </div>
@@ -175,10 +183,10 @@ function Interface() {
                 styles={{ marginTop: "60px" }}
               />
             </div> */}
-            <div className="form-row submit-btn">
+            <div className="form-row">
               <div className="input-data">
                 <div className="inner"></div>
-                <button type="submit" className="submit-btn">
+                <button type="submit" className="submit-btn" onClick={handleSubmit}>
                   Submit
                 </button>
               </div>
@@ -186,7 +194,14 @@ function Interface() {
                 <div className="inner"></div>
                 <button type="reset" className="submit-btn" onClick={handleReset}>
                   Reset Changes
-                </button>              </div>
+                </button>              
+                </div>
+              {/* <div className="input-data">
+                <div className="inner"></div>
+                <button type="refresh" className="refresh-btn" onClick={handleRefresh}>
+                  refresh
+                </button>              
+                </div> */}
             </div>
           </form>
         </div>

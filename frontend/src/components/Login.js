@@ -38,10 +38,6 @@ function Login({ setToken }) {
     }
   }
 
-  if (isLoggedIn) {
-    return <Link to="/" />;
-  }
-
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
