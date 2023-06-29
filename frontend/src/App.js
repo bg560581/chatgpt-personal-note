@@ -5,7 +5,7 @@ import Navigation from "./components/Navigation";
 import Interface from "./components/Interface";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+import Delete from "./components/Delete";
 import CurrentUserProvider from "./CurrentUser";
 import Pastnotes from "./components/settings/Pastnotes";
 

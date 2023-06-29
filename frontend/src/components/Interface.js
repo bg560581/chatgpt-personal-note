@@ -65,7 +65,7 @@ function Interface() {
       setSubName("");
       setWordCount("");
       e.preventDefault();
-      e.currentTarget.disabled = true;
+      // e.currentTarget.disabled = true;
       setSubmitDisabled(true)
     };
     
@@ -96,33 +96,19 @@ function Interface() {
     setNoteValue(initialNote);
   }
 
-  // function handleRefresh(e) {
-  //   e.preventDefault();
-  //   setNoteValue("")
-  //   handleSubmit = (e)=>{
-  //     e.currentTarget.disabled=false
-  //   }
-  // }
+  function handleRefresh(e) {
+    e.preventDefault();
+    setSubmitDisabled(false)
+    setNoteValue("")
+    setAge("");
+    setGender("");
+    setOccasion("");
+    setRelationship("");
+    setTone("");
+    setName("");
+    setSubName("");
+  }
 
-  // function handleGenerate() {
-  //   if (submittedPayload) {
-  //     // Re-submit the previous payload
-  //     fetch("http://localhost:5000/chat/", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(submittedPayload),
-  //     })
-  //       .then((response) => response.json())
-  //       .then((dataresponse) => {
-  //         setNote(dataresponse.content);
-  //         setSubmittedPayload(dataresponse.content)
-  //       });
-  //   }
-  //   // setShow(!show)
-
-  // }
   return (
     <div className="body-interface">
       <div></div>
@@ -156,24 +142,24 @@ function Interface() {
                 <Name handleChange={setName} id="name" required />
               </div>
               <div className="input-data">
-                <Age handleChange={setAge} id="age" />
+                <Age handleChange={setAge} id="age" required/>
               </div>
             </div>
 
             <div className="form-row">
               <div className="input-data">
-                <Gender handleChange={setGender} />
+                <Gender handleChange={setGender} required/>
               </div>
               <div className="input-data">
-                <Relationship handleChange={setRelationship} />
+                <Relationship handleChange={setRelationship} required/>
               </div>
             </div>
             <div className="form-row">
               <div className="input-data">
-                <Occasion handleChange={setOccasion} />
+                <Occasion handleChange={setOccasion} required/>
               </div>
               <div className="input-data">
-                <Tone handleChange={setTone} />
+                <Tone handleChange={setTone} required/>
               </div>
             </div>
             {/* <div>
@@ -196,12 +182,12 @@ function Interface() {
                   Reset Changes
                 </button>              
                 </div>
-              {/* <div className="input-data">
+              <div className="input-data">
                 <div className="inner"></div>
                 <button type="refresh" className="refresh-btn" onClick={handleRefresh}>
                   refresh
                 </button>              
-                </div> */}
+                </div>
             </div>
           </form>
         </div>

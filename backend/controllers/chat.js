@@ -53,4 +53,20 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.delete('/:id', async( req, res ) => {
+    try {
+      const note = await Note.findById(req.params.id);
+      if (!note) {
+        return res.status(404).json({ message: 'Document not found' });
+      }
+  
+      await note.deleteOne();
+      res.json({ message: 'Document deleted successfully' });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+  
+
 module.exports = router
